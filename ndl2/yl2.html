@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>ndl2-yl2</title>
+	
+</head>
+
+<body>
+<form method="get">
+	<table>
+		<caption>Saadame andmeid GET-ga</caption>
+    	<tr>
+      		<td>Kasutajanimi:</td>
+    	  	<td><input type="text" name="kasutaja" placeholder="Nimi"/></td>
+    	</tr>
+    	<tr>
+      		<td>parool:</td>
+      		<td><input type="password" name="parool" placeholder="Turvaline parool"/></td>
+    	</tr>
+    	<tr>
+    		<td>Email:</td>
+    		<td><input type="email" name="email" placeholder="keegi.kuskil@seal.ee"/></td>
+    	</tr>
+    	<tr>
+    		<td>Sünni kuupäev</td>
+    		<td><input type="date" name="synd" placeholder="pp.kk.aaaa"/></td>
+   		</tr>
+   		<tr>
+   			<td>Sugu</td>
+   			<td>
+   				<input type="radio" name="sugu" value="Mees" /> Mees <br>
+   				<input type="radio" name="sugu" value="Naine" /> Naine <br>
+   			</td>
+   		</tr>
+   		<tr>
+   			<td>Oled andmete saatmisega nõus</td>
+   			<td>
+   				<input type="radio" name="kinnitus" value="Jah" checked/> Jah
+   				<input type="radio" name="kinnitus" value="ei"/> Ei
+   			</td>
+   		</tr>
+    
+    	<tr>
+    		<td><input type="submit" value="Postita"/></td>
+    	</tr>
+	</table>
+</form>
+<br>
+<form method="post">
+	<table>
+		<caption>Saadame andmeid POST-ga</caption>
+    	<tr>
+      		<td>Kasutajanimi:</td>
+    	  	<td><input type="text" name="kasutaja" placeholder="Nimi"/></td>
+    	</tr>
+    	<tr>
+      		<td>Parool:</td>
+      		<td><input type="password" name="parool" placeholder="Turvaline parool"/></td>
+    	</tr>
+    	<tr>
+    		<td>Mis hinnet tahad?</td>
+    		<td>
+    			<select name="hinne">
+    				<option value="1">Hinnet 1</option>
+    				<option value="2">Hinnet 2</option>
+    				<option value="3">Hinnet 3</option>
+    				<option value="4">Hinnet 4</option>
+    				<option value="5">Hinnet 5</option>
+    			</select>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td>&nbsp;</td>
+    		<td>
+    			<textarea name="kommentaar" rows="8" cols="40" placeholder="Lisa kommentaar õpitu kohta"></textarea>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td><input type="submit" value="Postita"/></td>
+    	</tr>
+    </table>
+</form>
+
+</body>
+</html>
