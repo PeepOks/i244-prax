@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="utf-8">
+  <title>yl2</title>
+  <meta name="author" content="peep">
+  <style type="text/css">
+  	.bead {
+  		height: 40px;
+  		width: 40px;
+  		background-color: green;
+  		border-radius: 50px;
+  		border: 1px solid black;
+  		box-shadow: 0px -11px 23px -3px black inset;
+  		float: right;
+  		margin-top:-20px;
+  	}
+  	.row {
+  		clear: both;
+  		border: 1px dashed black;
+  		margin: 40px 0 40px 0;
+  	}
+  	#raam {
+  		border: 10px solid brown;
+  	}
+  	.row:nth-child(1) .bead:nth-child(2), .row:nth-child(1) .bead:nth-child(3){
+  		float:left;
+  	}
+  	.row:nth-child(2) .bead:nth-child(4){
+  		float:left;
+  	}
+  	.row:nth-child(3) .bead:nth-child(3), .row:nth-child(3) .bead:nth-child(1), .row:nth-child(3) .bead:nth-child(2){
+  		float:left;
+  	}
+  	.row:nth-child(4) .bead:nth-child(2), .row:nth-child(4) .bead:nth-child(5){
+  		float:left;
+  	}
+  </style>
+</head>
+
+<body>
+  <div id="raam">
+  	<div class="row">
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  	</div>
+  	<div class="row">
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  	</div>
+  	<div class="row">
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  	</div>
+  	<div class="row">
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  		<div class="bead"></div>
+  	</div>
+  </div>
+  <p>
+	<a href="http://jigsaw.w3.org/css-validator/check/referer">
+    	<img style="border:0;width:88px;height:31px"
+        	src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+        	alt="Valid CSS!" />
+    	</a>
+	</p>
+</body>
+</html>
