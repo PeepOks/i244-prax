@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Praktikum  - Positsioneerimise ülesanne</title>
+<style type="text/css">
+body {
+	background: #0A24A9;
+}
+#kogu {
+	position:fixed;
+	width: 150px;
+	height: 150px;
+	left:300px;
+	bottom:250px;
+}
+.layer {
+	border-radius: 50%;
+	position: absolute;
+}
+.layer:nth-child(1) {
+	width: 100%;
+	height: 100%;
+	border:solid 2px grey;
+	background: white;
+	left: 0%;
+	top: 0%;
+}
+.layer:nth-child(2) {
+	width: 90%;
+	height: 90%;
+	border:solid 2px orangered;
+	background: red;
+	left: 5%;
+	top: 5%;
+}
+.layer:nth-child(3) {
+	width: 70%;
+	height: 70%;
+	border:solid 2px grey;
+	background: white;
+	left: 15%;
+	top: 15%;
+}
+.layer:nth-child(4) {
+	width: 50%;
+	height: 50%;
+	border:solid 2px orangered;
+	background: red;
+	left: 25%;
+	top: 25%;
+}
+.layer:nth-child(5) {
+	width: 30%;
+	height: 30%;
+	border:solid 2px grey;
+	background: white;
+	left: 35%;
+	top: 35%;
+}
+.layer:nth-child(6) {
+	width: 10%;
+	height: 10%;
+	border:solid 2px orangered;
+	background: red;
+	left: 45%;
+	top: 45%;
+}
+#duck {
+	position: fixed;
+	bottom: 0px;
+	left:0px;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+<img src="duck.png" id="duck" alt="bg">
+<div id="kogu">
+	<div class="layer"></div>
+	<div class="layer"></div>
+	<div class="layer"></div>
+	<div class="layer"></div>
+	<div class="layer"></div>
+	<div class="layer"></div>
+</div>
+<script>
+	window.onload = function() {
+		var laud = document.getElementsByClassName("layer");		
+		for (var i=0; i<laud.length; i++){
+			laud[i].onclick= function(){
+  			this.style.top = Math.floor((Math.random() * 100) + 1)+"%";
+  			this.style.left = Math.floor((Math.random() * 100) + 1)+"%";
+		}
+		}
+
+	}
+
+</script>
+</body>
+</html>
