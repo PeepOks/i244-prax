@@ -11,16 +11,32 @@
 		$(document).ready(function(){
 			$("li").first().addClass("active");
 			console.log("laetud");
-			
+
 			$("#next").click(function(){
-				console.log("edasi");
-				$("li").removeClass("active");
-				$("li").next().addClass("active");
-				$("li").next().addClass("active");
-				
-				
+				if ($("li").last().is(".active")){
+					$("li").last().removeClass("active");
+					$("li").first().addClass("active");
+				} else if ($("li").first().is(".active")){
+					$("li").siblings(".active").next().last().addClass("active");
+					$("li").first().removeClass("active");
+				} else {
+					$("li").siblings(".active").next().last().addClass("active");
+					$("li").siblings(".active").first().removeClass("active");
+				}
 			});
-		
+			
+			$("#prev").click(function(){
+				if ($("li").last().is(".active")){
+					$("li").siblings(".active").prev().last().addClass("active");
+					$("li").last().removeClass("active");
+				} else if ($("li").first().is(".active")){
+					$("li").last().addClass("active");
+					$("li").first().removeClass("active");
+				} else {
+					$("li").siblings(".active").prev().last().addClass("active");
+					$("li").siblings(".active").last().removeClass("active");
+				}
+			});
 		});
 		
 
@@ -35,6 +51,7 @@
 <li>teine</li>
 <li>kolmas</li>
 <li>neljas</li>
+<li>viies</li>
 </ul>
 
 </body>
