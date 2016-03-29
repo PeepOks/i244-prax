@@ -1,0 +1,1 @@
+<p style="display:inline-block; width:29%; border:solid #c0c0c0 2px; border-radius:5px; padding:10px; margin:1%;"><img src="<?php echo $kass['pilt'];?>" alt=pilt style="max-height: 100px"> <b><?php echo $kass['nimi'];?></b> on <?php echo $kass['sugu'];?> <?php echo $kass['vanus'];?> aastane <?php echo $kass['varvus'];?> kass.</p>
