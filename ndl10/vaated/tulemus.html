@@ -1,0 +1,18 @@
+<?php
+		if (!isset($_SESSION['voted_for']))
+			{
+    			$_SESSION['voted_for']=$id;
+			} else
+			{
+				echo "Sa olid juba hääletanud. Mitu korda hääletada ei saa ";
+				$id = $_SESSION['voted_for'];
+			}
+?>
+<?php if ($id): ?>
+	<h3>Oled teinud oma valiku</h3>
+	<p>Valisid selle ilusa pildi: <br/>
+		<img src="<?php echo $pildid[$_SESSION['voted_for']]['src'];?>" alt="väljavalitu"/></p>
+		
+<?php else: ?>
+	<h3>Sellist pilti ei eksisteeri, palun tee uus <a href="?page=vote">valik</a>.</h3>
+<?php endif; ?>
