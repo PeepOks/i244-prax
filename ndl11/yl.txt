@@ -1,0 +1,25 @@
+CREATE TABLE 110239_pildid (
+id INTEGER PRIMARY KEY auto_increment UNIQUE,
+thumb VARCHAR(255),
+pilt VARCHAR(255),
+pealkiri VARCHAR(255),
+autor VARCHAR(255),
+punktid INTEGER
+);
+
+INSERT INTO 110239_pildid (thumb, pilt, pealkiri, autor, punktid) 
+VALUES ('thumb1.jpg', 'pilt1.jpg', 'Esimene','Kunstnik', 43),
+('thumb2.jpg', 'pilt2.jpg', 'Teine', 'Kunstnik', 3), 
+('thumb3.jpg', 'pilt3.jpg', 'Kolmas', 'Kunstnik', 143), 
+('thumb4.jpg', 'pilt4.jpg', 'Neljas', 'Kunstnik', 87), 
+('thumb5.jpg', 'pilt5.jpg', 'Viies', 'Kunstnik', 22);
+
+select * from 110239_pildid where punktid > 50 ORDER BY punktid ASC;
+
+select * from 110239_pildid WHERE autor='Kunstnik';
+
+update 110239_pildid SET punktid=punktid+3;
+
+select autor, count(*) from 110239_pildid group by autor;
+
+select SUM(punktid) from 110239_pildid;
