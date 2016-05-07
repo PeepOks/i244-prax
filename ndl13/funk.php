@@ -13,9 +13,28 @@ function connect_db(){
 
 function logi(){
 	// siia on vaja funktsionaalsust (13. nädalal)
-	
-	
-	include_once('views/login.html');
+	if (isset($_SESSION['user'])){
+    			header("Location: ?page=loomad");
+			} else if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				if (isset($_POST['user']) && $_POST['user']!="" && isset($_POST['pass']) && $_POST['pass']!=""){
+					global $connection;
+					$username=mysqli_real_escape_string($connection, $_POST['user']);
+					$password=mysqli_real_escape_string($connection, $_POST['pass']);
+					
+					$query = "select id from poks_kylastajad where username='".$username."' and passw=sha1('".$password."');";
+					$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
+					if(mysqli_num_rows($result) > 0 )
+        				{
+        					echo "sai sisse";
+            				$_SESSION["user"] = $username; 
+							header("Location: ?page=loomad");
+        				}
+				}
+			} else
+			{
+				include_once('views/login.html');	
+			}
+	include_once('views/login.html');	
 }
 
 function logout(){
@@ -26,6 +45,11 @@ function logout(){
 
 
 function kuva_puurid(){
+	
+	if (!isset($_SESSION['user']))
+			{
+    			header("Location: ?page=login");
+			} else {
 	// siia on vaja funktsionaalsust
 	global $connection;
 	$query = "select distinct(puur) as puur from poks_loomaaed order by puur asc;";
@@ -43,13 +67,35 @@ function kuva_puurid(){
 	}
 	include_once('views/puurid.html');
 	
+	}
 }
 
 function lisa(){
 	// siia on vaja funktsionaalsust (13. nädalal)
+		if (!isset($_SESSION['user']))
+			{
+    			header("Location: ?page=login");
+			} else if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$lisatudfail = upload("liik");
+				if (isset($_POST['nimi'], $_POST['puur'], $_FILES['liik']) && $lisatudfail!="" && $_POST['nimi']!="" && $_POST['puur']!="" && $_FILES['liik']['name']!=""){
+					
+						global $connection;	
+						$nimi=mysqli_real_escape_string($connection, $_POST['nimi']);
+						$puur=mysqli_real_escape_string($connection, $_POST['puur']);
+						$liik=mysqli_real_escape_string($connection, $lisatudfail);
+					 
+						$query = "INSERT INTO poks_loomaaed (nimi, puur, liik) VALUES ('".$nimi."', ".$puur.", '".$liik."');";
+						echo $query;
+						$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
+						if(mysqli_insert_id($connection) > 0 )
+        					{       
+								header("Location: ?page=loomad");
+        					}
+					
+				}
+			}
 	
-	include_once('views/loomavorm.html');
-	
+	include_once('views/loomavorm.html');	
 }
 
 function upload($name){

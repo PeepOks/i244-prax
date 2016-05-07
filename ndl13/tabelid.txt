@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `poks_kylastajad` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `username` varchar(100) NOT NULL,
+  `passw` varchar(40) NOT NULL,
+  `visits` int(11) NOT NULL
+);
+
+INSERT INTO `poks_kylastajad` (`username`, `passw`, `visits`) VALUES
+('admin', SHA1('admin'), '1');
