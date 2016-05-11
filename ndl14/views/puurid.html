@@ -1,0 +1,18 @@
+<pre>
+	<?php
+		//print_r($puurid);
+	?>
+</pre>
+<?php if (!empty($puurid)):?>
+	<?php foreach($puurid as $puuri_id=>$puur): ?>
+		<div class="puur">
+			<h3>Puur nr <?php echo $puuri_id; ?></h3>
+			<?php foreach($puur as $looma_id=>$loom): ?>
+				<?php if($_SESSION['roll'] == 'admin'): ?>
+					<p><a href = "?page=muuda&id=<?php echo $loom['id']; ?>">Muuda</a></p>
+				<?php endif; ?>
+				<img src="<?php echo $loom['liik']; ?>" alt="<?php echo $loom['nimi']; ?>" title="<?php echo $loom['nimi']; ?>">
+			<?php endforeach; ?>
+		</div>
+	<?php endforeach; ?>
+<?php endif;?>

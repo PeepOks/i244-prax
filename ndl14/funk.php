@@ -25,10 +25,22 @@ function logi(){
 					$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
 					if(mysqli_num_rows($result) > 0 )
         				{
-        					echo "sai sisse";
-            				$_SESSION["user"] = $username; 
+            				//uuendame visit counterit
 							$query = "update poks_kylastajad set visits=visits+1 where username='".$username."';";
+							mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
+							
+							//Küsime kasutaja rolli
+							$query = "select roll from poks_kylastajad where username='".$username."';";
 							$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
+							$roll = mysqli_fetch_assoc($result);
+							
+							if ($roll['roll']=='admin'){
+								$_SESSION['roll'] = 'admin';
+							} else {
+								$_SESSION['roll'] = 'user';
+							}
+							$_SESSION["user"] = $username;
+
 							header("Location: ?page=loomad");
         				}
 				}
@@ -97,14 +109,75 @@ function lisa(){
 				}
 			}
 	
-	include_once('views/loomavorm.html');	
+	if ($_SESSION['roll']=='admin'){
+		include_once('views/loomavorm.html');
+	} else {
+		header("Location: ?page=loomad");
+	}
+		
+}
+
+function muuda(){
+		global $connection;
+		if (isset($_SESSION['user']) && $_SESSION['roll']='admin'){
+			 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])){
+			 	$loomainfo = hangi_loom($_GET['id']);
+				include_once('views/editvorm.html');	
+			 } else if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])){
+			 	$liik = upload("liik");
+			 	$loomainfo = hangi_loom($_POST['id']);
+				//Kontrollime muudatusi
+				if($_POST['nimi']!=$loomainfo['nimi']){
+					$nimi = $_POST['nimi'];
+				} else {
+					$nimi = $loomainfo['nimi'];
+				}
+				if($_POST['puur']!=$loomainfo['puur']){
+					$puur = $_POST['puur'];
+				} else {
+					$puur = $loomainfo['puur'];
+				}
+				if($_FILES['liik']['name']==""){
+					$liik = $loomainfo['liik'];
+				}
+				
+				$nimi=mysqli_real_escape_string($connection, $nimi);
+				$puur=mysqli_real_escape_string($connection, $puur);
+				$liik=mysqli_real_escape_string($connection, $liik);
+				
+				$query = "UPDATE poks_loomaaed SET nimi='".$nimi."',puur='".$puur."',liik='".$liik."' WHERE id='".$_POST['id']."';";
+				echo $query;
+				$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));      
+				
+				header("Location: ?page=loomad");
+			 } else {
+				header("Location: ?page=loomad");
+			 }
+		}
+}
+
+function hangi_loom($id) {
+	global $connection;
+	
+	$query = "SELECT * from poks_loomaaed WHERE id='".$id."';";
+	$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connect));
+	
+	if(mysqli_num_rows($result) > 0 ){
+			$loom = array();
+			$loom = mysqli_fetch_assoc($result);
+			return $loom;
+	} else {
+		header("Location: ?page=loomad");
+	}
 }
 
 function upload($name){
 	$allowedExts = array("jpg", "jpeg", "gif", "png");
 	$allowedTypes = array("image/gif", "image/jpeg", "image/png","image/pjpeg");
-	$extension = end(explode(".", $_FILES[$name]["name"]));
-
+	//$extension = end(explode(".", $_FILES[$name]["name"]));
+	$parts = explode(".", $_FILES[$name]["name"]);
+	$extension = end($parts);
+	
 	if ( in_array($_FILES[$name]["type"], $allowedTypes)
 		&& ($_FILES[$name]["size"] < 100000)
 		&& in_array($extension, $allowedExts)) {

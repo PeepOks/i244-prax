@@ -1,0 +1,13 @@
+<form action="?page=muuda" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="<?php if (isset($loomainfo['id'])) echo htmlspecialchars($loomainfo['id']); ?>"><br/>
+	<input type="text" name="nimi" placeholder="nimi" value="<?php if (isset($loomainfo['nimi'])) echo htmlspecialchars($loomainfo['nimi']); ?>"/><br/>
+	<input type="number" name="puur" placeholder="puur" value="<?php if (isset($loomainfo['puur'])) echo htmlspecialchars($loomainfo['puur']); ?>"/><br/>
+	<img src="<?php echo $loomainfo['liik']; ?>" alt="<?php echo $loomainfo['nimi']; ?>" title="<?php echo $loomainfo['nimi']; ?>" style="max-width: 100px;"><br/> 
+	Näopilt: <input type="file" name="liik"/><br/>
+	<input type="submit" value="Muuda"/> 
+</form>
+<?php if (isset($errors)):?>
+		<?php foreach($errors as $error):?>
+			<div style="color:red;"><?php echo htmlspecialchars($error); ?></div>
+		<?php endforeach;?>
+<?php endif;?>
