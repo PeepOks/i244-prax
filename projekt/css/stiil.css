@@ -1,0 +1,79 @@
+#sisse {
+	background: url('pildid/v2rav.png') no-repeat center;
+	display: inline-block;
+	width: 100%;
+	padding:235px 0px;
+	text-align: center;
+	text-decoration: none;
+	color: gold;
+	font-weight: bold;
+	font-size: 30px;
+	text-shadow:0px 0px 10px black;
+}
+
+body {
+	background: skyblue;
+	margin:0px;
+}
+#wrap{
+	width: 900px;
+	background: white;
+	margin: auto;
+	overflow: auto;
+	min-height:600px;
+}
+#menu {
+	list-style: none;
+	background: PaleGreen;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+#menu li, #menu a {
+	display: inline-block;
+}
+#menu a {
+	padding:5px 20px;
+	color: black;
+	text-decoration: none;
+}
+#menu a:hover {
+	background: Aquamarine;
+	color: DarkSlateGray;
+}
+#content {
+	padding:10px;
+}
+#login{
+	margin:auto;
+	width: 35%;	
+	margin-top:25%;
+	border: 1px solid black;
+}
+#adduser{
+	margin:auto;
+	margin-top:15px;
+	padding: 20px;
+	width: 50%;	
+	border: 1px solid black;
+	border-radius: 20px;
+}
+#adduser input {
+	float: right;
+	clear: both;
+}
+#adduser table {
+	width:100%;
+}
+#adduser table td {
+	text-align: left;
+	margin-left: 10px;
+}
+#adduser table tbody {
+    margin-bottom:15px;
+    border-radius: 5px;
+}
+
+.clear {
+	clear:both;
+}
