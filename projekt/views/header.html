@@ -9,21 +9,20 @@
 <div id="wrap">
 	<ul id="menu">
 		<li><a href="?">Pealeht</a></li>
-		<?php if(isset($_SESSION['logged_in_user']) && $_SESSION['user_role']=='admin'): ?>
+		<?php if(isset($_SESSION['logged_in_user'], $_SESSION['user_role']) && $_SESSION['user_role']=='admin'): ?>
 			<li><a href="?page=gallery">Pildigalerii</a></li>
 			<li><a href="?page=add_p">Lisa pilte</a></li>
 			<li><a href="?page=change_p">Muuda pilte</a></li>
-			<li><a href="?page=change_u">Muuda kontot</a></li>
+			<li><a href="?page=change_u">Muuda oma kontot</a></li>
 			<li><a href="?page=logout">Logi välja</a></li>
 		<?php elseif(isset($_SESSION['logged_in_user'])): ?>
 			<li><a href="?page=gallery">Pildigalerii</a></li>
 			<li><a href="?page=add_p">Lisa pilte</a></li>
 			<li><a href="?page=change_p">Muuda pilte</a></li>
-			<li><a href="?page=change_u">Muuda kontot</a></li>
+			<li><a href="?page=change_u">Muuda oma kontot</a></li>
 			<li><a href="?page=logout">Logi välja</a></li>
 		<?php else: ?>
 			<li><a href="?page=login">Logi sisse</a></li>
-			<li><a href="?page=add_u">Lisa kasutaja</a></li>
 		<?php endif; ?>
 	</ul>
 	<div id="content">

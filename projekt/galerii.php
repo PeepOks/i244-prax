@@ -23,7 +23,7 @@ switch($page){
 	case "change_p":
 		change_picture();
 	break;
-	case "add_u":
+	case "add_user":
 		add_user();
 	break;
 	case "change_u":

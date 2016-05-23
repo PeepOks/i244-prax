@@ -1,9 +1,9 @@
 <div id="login">
 	<form action="?page=login" method="POST" >
-		<input type="text" name="user" placeholder="kasutajanimi"/><br/>
-		<input type="password" name="pass" placeholder="parool"/><br/>
-		<input type="submit" value="logi sisse!"/>
+		<input type="text" name="user" placeholder="Kasutajanimi" value="<?php if (isset($_POST['user'])) echo htmlspecialchars($_POST['user']); ?>"/><br/>
+		<input type="password" name="pass" placeholder="Parool"/><br/>
+		<input type="submit" value="Logi sisse!"/>
 	</form>
 	<br>
-	<p><a href="?page=add_u">Redisteeri kasutajaks</a></p>
+	<p><a href="?page=add_user">Redisteeri kasutajaks</a></p>
 </div>

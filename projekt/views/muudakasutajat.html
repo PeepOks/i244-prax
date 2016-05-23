@@ -1,7 +1,54 @@
-<form action="?page=change_u" method="POST" enctype="multipart/form-data">
-	<input type="text" name="enimi" placeholder="enimi" value=""/><br/>
-	<input type="text" name="pnimi" placeholder="pnimi" value=""/><br/>
-	<input type="number" name="vanus" placeholder="vanus" value=""/><br/>
+<div id="userform">
+	<form action="?page=change_u" method="POST">
+		<input type="hidden" name="id" value="<?php if (isset($kasutajainfo['id'])) echo htmlspecialchars($kasutajainfo['id']); ?>">
+		<table>
+			<caption><h2>Kasutaja andmed</h2></caption>
+			<tbody>
+				<tr>
+					<td>Kasutajanimi:</td>
+					<td><input type="text" name="knimi" readonly value="<?php if (isset($kasutajainfo['knimi'])) echo htmlspecialchars($kasutajainfo['knimi']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Parool:</td>
+					<td><input type="password" name="parool" placeholder="Turvaline parool" value="<?php if (isset($kasutajainfo['parool'])) echo htmlspecialchars($kasutajainfo['parool']); ?>"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<hr>
+					</td>
+				</tr>
+				<tr>
+					<td>Eesnimi:</td>
+					<td><input type="text" name="enimi" placeholder="Sinu nimi" value="<?php if (isset($kasutajainfo['enimi'])) echo htmlspecialchars($kasutajainfo['enimi']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Perekonna nimi:</td>
+					<td><input type="text" name="pnimi" placeholder="Sinu perekonna nimi" value="<?php if (isset($kasutajainfo['pnimi'])) echo htmlspecialchars($kasutajainfo['pnimi']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Vanus:</td>
+					<td><input type="number" name="vanus" placeholder="Vanus" value="<?php if (isset($kasutajainfo['vanus'])) echo htmlspecialchars($kasutajainfo['vanus']); ?>"/></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<hr>
+					</td>
+				</tr>
+			</tbody>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Uuenda andmeid"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
 
-	<input type="submit" value="Lisa"/> 
-</form>
+<?php if (isset($errors)):?>
+		<?php foreach($errors as $error):?>
+			<div style="color:red;"><?php echo htmlspecialchars($error); ?></div>
+		<?php endforeach;?>
+<?php endif;?>

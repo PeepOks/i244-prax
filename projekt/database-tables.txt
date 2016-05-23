@@ -1,0 +1,38 @@
+CREATE TABLE IF NOT EXISTS `poks_projekt_kasutajad` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `knimi` varchar(100) NOT NULL,
+  `parool` varchar(100) NOT NULL,
+  `enimi` varchar(40) NOT NULL,
+  `pnimi` varchar(40) NOT NULL,
+  `vanus` int(10) NOT NULL DEFAULT '0',
+  `roll` ENUM('user', 'admin') NOT NULL DEFAULT 'user',
+  `kylastusi` int(11) NOT NULL DEFAULT '0'
+);
+
+INSERT INTO `poks_projekt_kasutajad` (`knimi`, `parool`, `enimi`, `pnimi`, `roll`) VALUES
+('admin', SHA1('admin'),'Admin','Kasutaja', 'admin');
+INSERT INTO `poks_projekt_kasutajad` (`knimi`, `parool`, `enimi`, `pnimi`, `roll`) VALUES
+('user', SHA1('user'),'Tavaline','Kasutaja', 'user');
+
+
+CREATE TABLE IF NOT EXISTS `poks_projekt_pildid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `omaniku_id` int(11) NOT NULL,
+  `pildinimi` varchar(100) NOT NULL,
+  `pildifail` varchar(100) NOT NULL,
+  `pildikomm` varchar(100)
+);
+
+
+INSERT INTO `poks_loomaaed` (`id`, `nimi`, `puur`, `liik`) VALUES
+(1, 'Olaf', 8, 'pildid/bear.png'),
+(2, 'Kassper', 2, 'pildid/cat.png'),
+(3, 'Kaarel', 2, 'pildid/cat.png'),
+(4, 'Toomas', 2, 'pildid/cat.png'),
+(5, 'Rosso', 4, 'pildid/pig.png'),
+(6, 'Porco', 4, 'pildid/pig.png'),
+(7, 'Lucy', 5, 'pildid/monkey.png'),
+(8, 'Hopper', 8, 'pildid/rabbit.png'),
+(9, 'Maali', 7, 'pildid/cow.png'),
+(10, 'Kasper', 7, 'pildid/cow.png'),
+(11, 'Mingi', 7, 'pildid/cow.png');

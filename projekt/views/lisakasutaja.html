@@ -1,32 +1,15 @@
-<div id="adduser">
-	<form action="?page=add_u" method="POST">
+<div id="userform">
+	<form action="?page=add_user" method="POST">
 		<table>
 			<caption><h2>Kasutaja regristeerimise vorm</h2></caption>
 			<tbody>
 				<tr>
-					<td>Kasutajanimi</td>
-					<td><input type="text" name="knimi" placeholder="Kasutajanimi" value=""/></td>
+					<td>Kasutajanimi:</td>
+					<td><input type="text" name="knimi" placeholder="Kasutajanimi" value="<?php if (isset($_POST['knimi'])) echo htmlspecialchars($_POST['knimi']); ?>"/></td>
 				</tr>
 				<tr>
-					<td>Parool</td>
-					<td><input type="password" name="parool" placeholder="Turvaline parool" value=""></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<hr>
-					</td>
-				</tr>
-				<tr>
-					<td>Eesnimi</td>
-					<td><input type="text" name="enimi" placeholder="Sinu nimi" value=""/></td>
-				</tr>
-				<tr>
-					<td>Perekonna nimi</td>
-					<td><input type="text" name="pnimi" placeholder="Sinu perekonna nimi" value=""/></td>
-				</tr>
-				<tr>
-					<td>Vanus</td>
-					<td><input type="number" name="vanus" placeholder="Vanus" value="18"/></td>
+					<td>Parool:</td>
+					<td><input type="password" name="parool" placeholder="Turvaline parool" value="<?php if (isset($_POST['parool'])) echo htmlspecialchars($_POST['parool']); ?>"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -34,10 +17,30 @@
 					</td>
 				</tr>
 				<tr>
-					<td><a href="?page=tingimused">Kasutustingimuste nõus?</a></td>
-					<td><input type="checkbox" name="nousolek" checked="checked" /></td>
+					<td>Eesnimi:</td>
+					<td><input type="text" name="enimi" placeholder="Sinu nimi" value="<?php if (isset($_POST['enimi'])) echo htmlspecialchars($_POST['enimi']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Perekonna nimi:</td>
+					<td><input type="text" name="pnimi" placeholder="Sinu perekonna nimi" value="<?php if (isset($_POST['pnimi'])) echo htmlspecialchars($_POST['pnimi']); ?>"/></td>
+				</tr>
+				<tr>
+					<td>Vanus:</td>
+					<td><input type="number" name="vanus" placeholder="Vanus" value="<?php if (isset($_POST['vanus'])) echo htmlspecialchars($_POST['vanus']); ?>"/></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<hr>
+					</td>
+				</tr>
+				<tr>
+					<td><a href="?page=tingimused">Kasutustingimustega nõus?</a></td>
+					<td><input type="checkbox" name="nousolek" <?php if (isset($_POST['nousolek'])) echo htmlspecialchars("checked"); ?>></td>
 				</tr>
 			</tbody>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="Regitreeru kasutajaks"/>
