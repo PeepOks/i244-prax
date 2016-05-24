@@ -1,7 +1,37 @@
-<form action="?page=change_p" method="POST" enctype="multipart/form-data">
-	<input type="text" name="enimi" placeholder="enimi" value=""/><br/>
-	<input type="text" name="pnimi" placeholder="pnimi" value=""/><br/>
-	<input type="number" name="vanus" placeholder="vanus" value=""/><br/>
-
-	<input type="submit" value="Lisa"/> 
-</form>
+<div id="pictureform">
+	<form id="pildiform" action="?page=change_p" method="POST" enctype="multipart/form-data">
+	<table>
+		<caption>Pildi muutmine</caption>
+		<tbody>
+			<tr>
+				<td colspan="2"><img id="pildiplaceholder" src="<?php if (isset($pildiinfo['pildifail'])) echo htmlspecialchars($pildiinfo['pildifail']); ?>" alt="pildi_placeholder" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="file" name="pfile"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">Pildi pealkiri</td>
+			</tr>
+			<tr>
+				<td><input type="text" name="pnimi" placeholder="Pildi pealkiri" value="<?php if (isset($pildiinfo['pildinimi'])) echo htmlspecialchars($pildiinfo['pildinimi']); ?>"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">Kommentaar pildi kohta:</td>
+				
+			</tr>
+			<tr>
+				<td><textarea form="pildiform" name="pkomm" placeholder="Siia kirjuta midagi pildi kohta" ><?php if (isset($pildiinfo['pildikomm'])) echo htmlspecialchars($pildiinfo['pildikomm']); ?></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<hr>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Muuda"/> </td>
+			</tr>
+		</tbody>
+	</table>
+	<input type="hidden" name="id" value="<?php if (isset($pildiinfo['id'])) echo htmlspecialchars($pildiinfo['id']); ?>" />
+	</form>
+</div>

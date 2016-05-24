@@ -1,18 +1,13 @@
-<pre>
-	<?php
-		//print_r($puurid);
-	?>
-</pre>
-<?php if (!empty($puurid)):?>
-	<?php foreach($puurid as $puuri_id=>$puur): ?>
-		<div class="puur">
-			<h3>Puur nr <?php echo $puuri_id; ?></h3>
-			<?php foreach($puur as $looma_id=>$loom): ?>
-				<?php if($_SESSION['roll'] == 'admin'): ?>
-					<p><a href = "?page=muuda&id=<?php echo $loom['id']; ?>">Muuda</a></p>
-				<?php endif; ?>
-				<img src="<?php echo $loom['liik']; ?>" alt="<?php echo $loom['nimi']; ?>" title="<?php echo $loom['nimi']; ?>">
-			<?php endforeach; ?>
+<div id="galerii" >
+	<div>Kasutaja <?php echo htmlspecialchars($_SESSION['logged_in_user']); ?> pildid</div>
+<?php if (!empty($pildid)):?>
+	<?php foreach($pildid as $pildi_id=>$pilt): ?>
+		<div class="galeriipilt">
+			<p><?php echo $pilt["pildinimi"]; ?></p>
+			<img src="<?php echo $pilt["pildifail"]; ?>" alt="<?php echo $pilt["pildinimi"]; ?>" title="<?php echo $pilt["pildinimi"]; ?>" />
+			<p><?php echo $pilt["pildikomm"]; ?></p>
+			<a href="?page=change_p&id=<?php echo $pilt['id']; ?>">Muuda pilti</a>
 		</div>
 	<?php endforeach; ?>
 <?php endif;?>
+</div>

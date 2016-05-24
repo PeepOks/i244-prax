@@ -1,6 +1,37 @@
-<form action="?page=add_p" method="POST" enctype="multipart/form-data">
-	<input type="text" name="pnimi" placeholder="Pildi pealkiri" value=""/><br/>
-	<input type="file" name="pfile"/><br/>
+<div id="pictureform">
+	<form id="pildiform" action="?page=add_p" method="POST" enctype="multipart/form-data">
+	<table>
+		<caption>Pildi lisamimine</caption>
+		<tbody>
+			<tr>
+				<td colspan="2"><img id="pildiplaceholder" src="pictures/syspics/pildi_placeholder.png" alt="pildi_placeholder" /></td>
 
-	<input type="submit" value="Lae üles"/> 
-</form>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="file" name="pfile"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">Pildi pealkiri</td>
+			</tr>
+			<tr>
+				<td><input type="text" name="pnimi" placeholder="Pildi pealkiri" value=""/></td>
+			</tr>
+			<tr>
+				<td colspan="2">Kommentaar pildi kohta:</td>
+				
+			</tr>
+			<tr>
+				<td><textarea form="pildiform" name="pkomm" placeholder="Siia kirjuta midagi pildi kohta"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<hr>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Postita"/> </td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</div>
