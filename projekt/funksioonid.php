@@ -13,9 +13,11 @@ function connect_db(){
 function login(){
 	if (isset($_SESSION['logged_in_user'])){
     	header("Location: ?page=gallery");
-	} else  if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+		echo "pole sisse logitud";
+	} else if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				if (isset($_POST['user']) && $_POST['user']!="" && isset($_POST['pass']) && $_POST['pass']!=""){
 					global $connection;
+					
 					$username=mysqli_real_escape_string($connection, $_POST['user']);
 					$password=mysqli_real_escape_string($connection, $_POST['pass']);
 					//Kysime kas baasis on selline 
@@ -25,7 +27,7 @@ function login(){
             			//uuendame visit counterit
 						$query = "update poks_projekt_kasutajad set kylastusi=kylastusi+1 where knimi='".$username."';";
 						mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
-						
+						echo "pole sisse logitud";
 						//Küsime kasutaja rolli
 						$query = "select roll from poks_projekt_kasutajad where knimi='".$username."';";
 						$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
@@ -40,9 +42,10 @@ function login(){
 						$_SESSION["logged_in_user"] = $username;
 						header("Location: ?page=gallery");
         			} else {
-        				echo htmlspecialchars("<h3 style=\"color:red;\">Kontrolli kasutajanime ja parool õigsust!!!</h3>");
 						include_once('views/login.html');
         			}
+				} else {
+					include_once('views/login.html');
 				}
 	} else {
 		include_once('views/login.html');
@@ -229,7 +232,12 @@ function change_user(){
 					$pnimi = mysqli_real_escape_string($connection, $_POST['pnimi']);
 					$vanus = mysqli_real_escape_string($connection, $_POST['vanus']);
 					
-					$query = "UPDATE poks_projekt_kasutajad SET knimi='".$username."',parool=SHA1('".$parool."'),enimi='".$enimi."', pnimi='".$pnimi."', vanus='".$vanus."' WHERE id='".$_POST['id']."';";			
+					if (isset($_POST['parool'])){
+						$query = "UPDATE poks_projekt_kasutajad SET knimi='".$username."',parool=SHA1('".$parool."'),enimi='".$enimi."', pnimi='".$pnimi."', vanus='".$vanus."' WHERE id='".$_POST['id']."';";
+						
+					} else {
+						$query = "UPDATE poks_projekt_kasutajad SET knimi='".$username."',enimi='".$enimi."', pnimi='".$pnimi."', vanus='".$vanus."' WHERE id='".$_POST['id']."';";
+					}
 					$result = mysqli_query($connection, $query) or die("$query - ".mysqli_error($connection));
 					if(mysqli_affected_rows($connection) > 0 ){
 						//Kui saime kasutaja loodud oleme ka sisse logitud ja lähme galeriisse.

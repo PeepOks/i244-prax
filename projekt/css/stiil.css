@@ -1,30 +1,35 @@
 #sisse {
-	background: url('pildid/v2rav.png') no-repeat center;
 	display: inline-block;
 	width: 100%;
 	padding:235px 0px;
 	text-align: center;
 	text-decoration: none;
-	color: gold;
+	color: red;
 	font-weight: bold;
-	font-size: 30px;
-	text-shadow:0px 0px 10px black;
+	font-size: 20px;
 }
 
 body {
-	background: skyblue;
+	background: #7863ce;
 	margin:0px;
+	padding-top:10px;
 }
 #wrap{
 	width: 900px;
 	background: white;
 	margin: auto;
 	overflow: auto;
-	min-height:600px;
+	min-height:500px;
+	border-radius: 10px;
+}
+#wrap:after{
+	content:"";
+	display: block;
+	height:20px;
 }
 #menu {
 	list-style: none;
-	background: PaleGreen;
+	background: skyblue;
 	margin: 0px;
 	padding: 0px;
 	text-align: center;
@@ -39,15 +44,24 @@ body {
 }
 #menu a:hover {
 	background: Aquamarine;
-	color: DarkSlateGray;
 }
 #content {
 	padding:20px;
-	display: flex;
+	min-height:inherit;
+
+}
+#validate {
+	background: white;
+	margin-left:5px;
+}
+#validate p {
+	float: left;
+	margin-bottom:0px;
+	padding-right: 10px;
 }
 #login{
 	margin:auto;
-	margin-top:20%;
+	margin-top:15%;
 	width: 35%;
 	padding: 20px;
 	border: 1px solid black;
@@ -116,7 +130,7 @@ body {
 
 #galerii{
 	display: inline-block;
-	width: 100%;
+	min-width: 97%;
 	margin:auto;
 	margin-top:20px;
 	margin-bottom:20px;
@@ -132,6 +146,11 @@ body {
 	width: 28%;
 	padding:10px;
 }
+.galeriipilt p:first-of-type {
+	font-weight: bold;
+	font-size:large;
+}
+
 .galeriipilt img {
 	min-height: 50px;
 	max-width: 100%;

@@ -4,17 +4,18 @@
 	<meta charset="utf-8"/>
 	<title>Galerii Rakendus</title>
 	<link rel="stylesheet" type="text/css" href="css/stiil.css">
+	<script type="text/javascript" src="/~poks/i244-prax/projekt/highslide/highslide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/~poks/i244-prax/projekt/highslide/highslide.css" />
+	<script type="text/javascript">
+    	// override Highslide settings here
+    	// instead of editing the highslide.js file
+    	hs.graphicsDir = '/~poks/i244-prax/projekt/highslide/graphics/';
+	</script>
 </head>
 <body>
 <div id="wrap">
 	<ul id="menu">
-		<li><a href="?">Pealeht</a></li>
-		<?php if(isset($_SESSION['logged_in_user'], $_SESSION['user_role']) && $_SESSION['user_role']=='admin'): ?>
-			<li><a href="?page=gallery">Pildigalerii</a></li>
-			<li><a href="?page=add_p">Lisa pilte</a></li>
-			<li><a href="?page=change_u">Muuda oma kontot</a></li>
-			<li><a href="?page=logout">Logi välja</a></li>
-		<?php elseif(isset($_SESSION['logged_in_user'])): ?>
+		<?php if(isset($_SESSION['logged_in_user'])): ?>
 			<li><a href="?page=gallery">Pildigalerii</a></li>
 			<li><a href="?page=add_p">Lisa pilte</a></li>
 			<li><a href="?page=change_u">Muuda oma kontot</a></li>
